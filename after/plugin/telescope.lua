@@ -17,4 +17,7 @@ vim.keymap.set('n', '<leader>ps', function()
     builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
 --vim.keymap.set('n', '<leader>ps', builtin.live_grep, { desc = '[S]earch current [W]ord' })
+--
+-- lsp code references
+vim.keymap.set('n', '<leader>pr', builtin.lsp_references, { desc = '[R]eferences' })
 
