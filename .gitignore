@@ -1,7 +1,6 @@
-autoload/
-pack/
-plugin/
-plugged/*
+/autoload
+/pack
 .netrwhist
 backupinit.vim
-
+/plugged
+/plugin
