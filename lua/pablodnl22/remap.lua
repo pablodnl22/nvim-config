@@ -16,6 +16,7 @@ vim.keymap.set('n', '<leader>gp', 'f)', { noremap = true })
 vim.keymap.set('v', '<leader>gP', 'f(', { noremap = true })
 vim.keymap.set('n', '<leader>gP', 'f(', { noremap = true })
 
+-- deprecated
 vim.api.nvim_set_keymap('n', '<leader>i', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap=true, silent=true })
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
@@ -31,4 +32,18 @@ vim.keymap.set('n', '<leader>O', 'O<Esc>j', { noremap = true })
 
 vim.keymap.set('n', '$', 'g_', { noremap = true })
 vim.keymap.set('v', '$', 'g_', { noremap = true })
+
+-- Diagnostics
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- save and close all
+vim.keymap.set('n', 'ZZ', '<cmd>wa<CR><cmd>qa<CR>', { noremap = true })
 
