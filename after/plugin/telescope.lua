@@ -2,11 +2,24 @@ local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 
 telescope.setup {
-    pickers = {
-        find_files = {
-            hidden = false
-        }
+  defaults = {
+    -- Default configuration for telescope goes here:
+    -- config_key = value,
+    mappings = {
+      n = {
+        ['<c-d>'] = require('telescope.actions').delete_buffer
+      }, -- n
+      i = {
+        ["<C-h>"] = "which_key",
+        ['<c-d>'] = require('telescope.actions').delete_buffer
+      } -- i
+    } -- mappings
+  }, -- defaults
+  pickers = {
+    find_files = {
+      hidden = false
     }
+  }
 }
 
 vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = '[F]ind files' })
