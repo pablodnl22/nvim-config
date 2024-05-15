@@ -46,4 +46,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- save and close all
 vim.keymap.set('n', 'ZZ', '<cmd>wa<CR><cmd>qa<CR>', { noremap = true })
+vim.keymap.set('n', '<space>w', '<cmd>wa<CR>', { noremap = true })
+
+-- quickfix
+vim.keymap.set('n', 'gn', '<cmd>cnext<CR>', { noremap = true, desc = 'Go to [N]ext quickfix item' })
+vim.keymap.set('n', 'gp', '<cmd>cprev<CR>', { noremap = true, desc = 'Go to [P]revious quickfix item'})
+vim.keymap.set('n', '<C-q>', '<cmd>cclose<CR>', { noremap = true, desc = '[Q]uickfix close' })
+
 

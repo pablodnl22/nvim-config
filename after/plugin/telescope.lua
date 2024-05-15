@@ -16,6 +16,9 @@ telescope.setup {
     } -- mappings
   }, -- defaults
   pickers = {
+    buffers = {
+      sort_lastused = true
+    },
     find_files = {
       hidden = false
     }
