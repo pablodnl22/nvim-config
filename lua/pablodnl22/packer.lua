@@ -36,6 +36,13 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-fugitive'
     use 'lewis6991/gitsigns.nvim'
 
+    use({
+        "stevearc/aerial.nvim",
+        config = function()
+          require("aerial").setup()
+        end,
+      })
+
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v2.x',

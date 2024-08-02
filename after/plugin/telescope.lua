@@ -44,7 +44,7 @@ vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch curren
 --this functions requires ripgrep
 vim.keymap.set('n', '<leader>sg', function()
     builtin.grep_string({ search = vim.fn.input("May the Force be with you. > ") });
-end)
+end, { desc = '[S]earch by [G]rep' })
 
 
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
