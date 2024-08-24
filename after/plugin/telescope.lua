@@ -59,3 +59,29 @@ vim.keymap.set('n', '<leader>/', function()
         previewer = false,
     })
 end, { desc = '[/] Fuzzily search in current buffer' })
+
+
+function vim.getVisualSelection()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ''
+	end
+end
+
+local tb = require('telescope.builtin')
+
+vim.keymap.set('v', '<leader>sf', function()
+    local text = vim.getVisualSelection()
+    tb.find_files({ default_text = text })
+end, { noremap = true, silent = true, desc = '[S]earch [F]iles' })
+
+vim.keymap.set('v', '<leader>sg', function()
+    local text = vim.getVisualSelection()
+    builtin.grep_string({ search = text })
+end, { noremap = true, silent = true, desc = '[S]earch by [G]rep' })

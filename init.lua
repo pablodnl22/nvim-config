@@ -11,3 +11,10 @@ autocmd({"BufWritePre"}, {
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
+
+autocmd({"TextYankPost"}, {
+    group = Pablodnl22,
+    callback = function()
+        vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
+    end
+})
