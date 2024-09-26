@@ -52,7 +52,3 @@ vim.keymap.set('i', '<C-t>', '<Nop>', { noremap = true })
 -- semicolon normal mode
 vim.keymap.set('n', '<leader>,', 'A;<Esc>', { noremap = true, desc = 'Insert semicolon at the end of the line' })
 
--- Buffer navigation
-vim.keymap.set('n', '<Tab>', '<cmd>bp<CR>', { noremap = true, desc = 'Go to [P]revious buffer' })
-vim.keymap.set('n', '<S-Tab>', '<cmd>bn<CR>', { noremap = true, desc = 'Go to [N]ext buffer' })
-
