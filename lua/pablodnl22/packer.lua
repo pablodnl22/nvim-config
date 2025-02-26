@@ -14,7 +14,7 @@ return require("packer").startup(function(use)
     })
 
     use("folke/tokyonight.nvim")
-    -- use {'rose-pine/neovim', as = 'rose-pine'}
+
     use("github/copilot.vim")
 
     use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
@@ -58,6 +58,16 @@ return require("packer").startup(function(use)
         config = function()
             require("trouble").setup({})
         end,
+    })
+
+    use({
+        "jackMort/ChatGPT.nvim",
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "folke/trouble.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
     })
 
     use({
