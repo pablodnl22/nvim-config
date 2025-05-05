@@ -55,3 +55,4 @@ vim.keymap.set('i', '<C-t>', '<Nop>', { noremap = true })
 -- semicolon normal mode
 vim.keymap.set('n', '<leader>,', 'A;<Esc>', { noremap = true, desc = 'Insert semicolon at the end of the line' })
 
+

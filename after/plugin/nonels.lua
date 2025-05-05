@@ -6,11 +6,11 @@ null_ls.setup({
             extra_args = { "--indent-type", "Spaces", "--indent-width", 4 },
         }),
         null_ls.builtins.completion.spell,
-        null_ls.builtins.diagnostics.mypy.with({
-            condition = function(utils)
-                return utils.root_has_file({ "mypy.ini" })
-            end,
-        }),
+        --null_ls.builtins.diagnostics.mypy.with({
+        --    condition = function(utils)
+        --        return utils.root_has_file({ "mypy.ini" })
+        --    end,
+        --}),
         require("none-ls.formatting.autopep8"),
     },
 })

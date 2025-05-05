@@ -1,4 +1,5 @@
 local home = vim.fn.expand("$HOME")
+
 require("chatgpt").setup({
     openai_params = {
       -- NOTE: model can be a function returning the model name
@@ -20,5 +21,11 @@ require("chatgpt").setup({
         top_p = 0.1,
         n = 1,
       },
-    api_key_cmd = "gpg --decrypt " .. home .. "/.config/nvim/openai_key.txt.gpg"
+    api_key_cmd = "gpg --decrypt " .. home .. "/.config/nvim/personal_openai_key.txt.gpg"
 })
+
+vim.keymap.set("n", "<leader>gc", ":ChatGPTCompleteCode<CR>")
+vim.keymap.set("v", "<leader>gc", ":ChatGPTEditWithInstructions<CR>")
+
+
+

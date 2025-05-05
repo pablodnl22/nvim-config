@@ -87,3 +87,28 @@ vim.keymap.set("v", "<leader>sg", function()
     local text = vim.getVisualSelection()
     builtin.grep_string({ search = text })
 end, { noremap = true, silent = true, desc = "[S]earch by [G]rep" })
+
+--- Python search for class instances
+--- This function takes the highlighted text and append a `(` character
+vim.keymap.set("v", "<leader>sn", function()
+    local text = vim.getVisualSelection()
+    local search = text .. "("
+    builtin.grep_string({ search = search })
+end, { noremap = true, silent = true, desc = "[S]earch [N]ew Instances" })
+
+
+--- Python search for class extensions
+--- This function takes the highlighted text and wraps it with `(` and `)`
+vim.keymap.set("v", "<leader>se", function()
+    local text = vim.getVisualSelection()
+    local search = "(" .. text .. ")"
+    builtin.grep_string({ search = search })
+end, { noremap = true, silent = true, desc = "[S]earch [E]xtensions" })
+
+--- Python search for implementations
+--- This function takes the highlighted text and wraps it with `(`
+vim.keymap.set("v", "<leader>si", function()
+    local text = vim.getVisualSelection()
+    local search = text .. "("
+    builtin.grep_string({ search = search })
+end, { noremap = true, silent = true, desc = "[S]earch [I]mplementations" })
