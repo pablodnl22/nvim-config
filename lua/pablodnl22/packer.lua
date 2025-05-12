@@ -14,7 +14,7 @@ return require("packer").startup(function(use)
 
     use("folke/tokyonight.nvim")
 
-    ---use("github/copilot.vim")
+    use("github/copilot.vim")
 
     use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
     use("theprimeagen/harpoon")
