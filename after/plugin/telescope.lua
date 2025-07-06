@@ -1,5 +1,10 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local pickers = require('telescope.pickers')
+local finders = require('telescope.finders')
+local conf = require('telescope.config').values
+local action_state = require('telescope.actions.state')
+local actions = require('telescope.actions')
 
 telescope.setup({
     defaults = {
@@ -52,7 +57,8 @@ end, { desc = "[S]earch by [G]rep" })
 
 vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+--vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "[S]earch [J]umplist" })
 
 -- Slightly advanced example of overriding default behavior and theme
 vim.keymap.set("n", "<leader>/", function()
@@ -112,3 +118,43 @@ vim.keymap.set("v", "<leader>si", function()
     local search = text .. "("
     builtin.grep_string({ search = search })
 end, { noremap = true, silent = true, desc = "[S]earch [I]mplementations" })
+
+
+
+
+local function oldfiles_in_cwd()
+  local cwd = vim.loop.cwd()
+  local filtered = {}
+
+
+   for _, file in ipairs(vim.v.oldfiles) do
+    if
+      vim.fn.filereadable(file) == 1 and
+      file:sub(1, #cwd) == cwd and
+      not file:match("/%.git/")  -- exclude anything inside .git/
+    then
+      table.insert(filtered, file)
+    end
+  end
+
+  pickers.new({}, {
+    prompt_title = 'Recent Files (CWD)',
+    finder = finders.new_table {
+      results = filtered
+    },
+    sorter = conf.generic_sorter({}),
+    attach_mappings = function(_, map)
+      actions.select_default:replace(function(prompt_bufnr)
+        local selection = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+        vim.cmd('edit ' .. vim.fn.fnameescape(selection.value))
+      end)
+      return true
+    end,
+  }):find()
+end
+
+
+vim.keymap.set('n', '<leader>s.', oldfiles_in_cwd, { desc = 'Telescope: Oldfiles in cwd' })
+
+
