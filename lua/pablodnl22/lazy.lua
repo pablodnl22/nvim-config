@@ -22,23 +22,7 @@ require("lazy").setup({
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-          suggestion = {
-              enabled = true,
-              auto_trigger = true, -- ✅ triggers suggestions as you type
-              debounce = 75,       -- optional: delay in ms before showing suggestion
-              keymap = {
-                accept = "<C-l>", -- ✅ change to your preferred accept key
-                next = "<M-]>",
-                prev = "<M-[>",
-                dismiss = "<C-]>",
-              },
-            },
-            panel = { enabled = false }, -- disables side suggestion panel
-      })
-    end,
-  enable=true
+    enable=true
   },
 
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
