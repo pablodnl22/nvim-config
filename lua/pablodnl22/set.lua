@@ -21,3 +21,5 @@ vim.opt.colorcolumn = "100"
 
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
+
+vim.opt.cursorline = true

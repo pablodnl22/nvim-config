@@ -5,8 +5,9 @@ require("mason-lspconfig").setup({
   -- NO auto-install, NO auto-setup
     automatic_enable = {
         exclude = {
-            "pyright",
-            "ruff"
+            -- in previous version those LSP were enabled twice
+            --"pyright",
+            --"ruff"
         }
     }
 })

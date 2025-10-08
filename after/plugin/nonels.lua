@@ -5,6 +5,10 @@ null_ls.setup({
         null_ls.builtins.formatting.stylua.with({
             extra_args = { "--indent-type", "Spaces", "--indent-width", 4 },
         }),
+        --javascript prettier
+        null_ls.builtins.formatting.prettier.with({
+            filetypes = { "javascript", "typescript", "css", "scss", "html", "json", "yaml", "markdown" },
+        }),
         null_ls.builtins.completion.spell,
         --null_ls.builtins.diagnostics.mypy.with({
         --    condition = function(utils)
